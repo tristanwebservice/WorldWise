@@ -35,6 +35,66 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Rome",
+      "country": "Italy",
+      "emoji": "🇮🇹",
+      "date": "2027-05-08T12:10:45.000Z",
+      "notes": "Historic and full of charm!",
+      "position": {
+        "lat": 41.902782,
+        "lng": 12.496366
+      },
+      "id": 55677822
+    },
+    {
+      "cityName": "Amsterdam",
+      "country": "Netherlands",
+      "emoji": "🇳🇱",
+      "date": "2027-09-20T16:45:00.000Z",
+      "notes": "Beautiful canals and bikes everywhere 🚴‍♂️",
+      "position": {
+        "lat": 52.3676,
+        "lng": 4.9041
+      },
+      "id": 66234511
+    },
+    {
+      "cityName": "Vienna",
+      "country": "Austria",
+      "emoji": "🇦🇹",
+      "date": "2027-03-15T10:00:00.000Z",
+      "notes": "Classical music vibes 🎶",
+      "position": {
+        "lat": 48.2082,
+        "lng": 16.3738
+      },
+      "id": 77442133
+    },
+    {
+      "cityName": "Prague",
+      "country": "Czech Republic",
+      "emoji": "🇨🇿",
+      "date": "2027-06-30T14:30:00.000Z",
+      "notes": "Fairytale architecture 🏰",
+      "position": {
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      "id": 88199211
+    },
+    {
+      "cityName": "Oslo",
+      "country": "Norway",
+      "emoji": "🇳🇴",
+      "date": "2027-11-05T09:15:00.000Z",
+      "notes": "Amazing fjords nearby!",
+      "position": {
+        "lat": 59.9139,
+        "lng": 10.7522
+      },
+      "id": 99311244
     }
   ]
 }
