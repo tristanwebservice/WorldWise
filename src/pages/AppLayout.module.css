@@ -5,3 +5,6 @@
   display: flex;
   position: relative;
 }
+form {
+  overflow: hidden;
+}
