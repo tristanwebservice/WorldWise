@@ -14,21 +14,19 @@ import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
 
 import Button from "./Button";
+import { useUrlPosition } from "../hooks/useUrlPosition";
 
 function Map() {
   const { cities } = useCities();
   const navigate = useNavigate();
 
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  const [searchParams] = useSearchParams();
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-
-  const mapLat = searchParams.get(`lat`);
-  const mapLng = searchParams.get(`lng`);
+  const [mapLat, mapLng] = useUrlPosition();
 
   useEffect(
     function () {
@@ -81,11 +79,7 @@ function Map() {
 
 function ChangeCenter({ position }) {
   const map = useMap();
-
-  useEffect(() => {
-    if (position && position.length === 2) map.setView(position);
-  }, [map, position]);
-
+  map.setView(position);
   return null;
 }
 
