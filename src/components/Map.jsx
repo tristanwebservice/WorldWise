@@ -11,14 +11,22 @@ import {
 
 import { useEffect, useState } from "react";
 import { useCities } from "../contexts/CitiesContext";
+import { useGeolocation } from "../hooks/useGeolocation";
+
+import Button from "./Button";
 
 function Map() {
   const { cities } = useCities();
   const navigate = useNavigate();
 
   const [mapPosition, setMapPosition] = useState([40, 0]);
-
   const [searchParams] = useSearchParams();
+  const {
+    isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
+  } = useGeolocation();
+
   const mapLat = searchParams.get(`lat`);
   const mapLng = searchParams.get(`lng`);
 
@@ -29,13 +37,21 @@ function Map() {
     [mapLat, mapLng]
   );
 
+  useEffect(
+    function () {
+      if (geolocationPosition)
+        setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+    },
+    [geolocationPosition]
+  );
+
   return (
-    <div
-      className={styles.mapContainer}
-      onClick={() => {
-        navigate(`form`);
-      }}
-    >
+    <div className={styles.mapContainer}>
+      {!geolocationPosition && (
+        <Button type="position" onClick={getPosition}>
+          {isLoadingPosition ? `Loading...` : `Use your position`}
+        </Button>
+      )}
       <MapContainer
         center={mapPosition}
         zoom={6}
@@ -65,7 +81,11 @@ function Map() {
 
 function ChangeCenter({ position }) {
   const map = useMap();
-  map.setView(position);
+
+  useEffect(() => {
+    if (position && position.length === 2) map.setView(position);
+  }, [map, position]);
+
   return null;
 }
 
@@ -74,7 +94,6 @@ function DetectClick() {
   useMapEvents({
     click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
   });
-  return 0;
 }
 
 export default Map;
